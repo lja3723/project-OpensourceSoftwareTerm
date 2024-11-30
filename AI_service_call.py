@@ -1,3 +1,21 @@
+"""
+사용형태
+form AI_service_call import NewsAIService
+
+news_service = NewsAIService()
+
+english_news = "string형태 영어뉴스 입력"
+
+result = news_service.process_news(english_news) #python dict형태로 반환
+
+result["data"]["translation"]["korean"] #한국어 번역 전문
+result["data"]["translation"]["original"] #영어 원문
+result["data"]["summary"["korean"] #한국어 요약본
+
+
+"""
+
+
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
@@ -59,7 +77,7 @@ class NewsAIService:
                 "news_text": news_text
             })
 
-            # 결과 파싱
+            # 결과 파싱(JSON형태 리턴 -> Python Dict형태)
             parsed_output = self.output_parser.parse(result.content)
 
             return {
@@ -82,7 +100,7 @@ class NewsAIService:
                 "data": None
             }
 
-
+#테스트코드
 if __name__ == "__main__":
 
     api_key = os.getenv("OPENAI_API_KEY")
