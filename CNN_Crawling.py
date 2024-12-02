@@ -16,3 +16,15 @@ class crawling:
         article_text = ' '.join([p.get_text().strip() for p in paragraphs])
 
         return article_text
+
+
+"""
+url = "https://edition.cnn.com/2024/12/01/middleeast/syrian-regime-airstrikes-opposition-forces-intl/index.html"
+
+cnn = crawling(url)
+
+cnn_result = cnn.crawler()
+
+cnn_result
+    
+"""
