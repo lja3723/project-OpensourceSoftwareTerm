@@ -27,10 +27,10 @@ import os
 class NewsAIService:
 
     def __init__(self):
-        #load dotenv
+        # load dotenv
         load_dotenv()
 
-        #Set Langchain
+        # Set Langchain
         self.llm = ChatOpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
             model_name=os.getenv("MODEL_NAME", "gpt-4o-mini")
@@ -100,16 +100,17 @@ class NewsAIService:
                 "data": None
             }
 
-#테스트코드
+
+# 테스트코드
 if __name__ == "__main__":
 
     api_key = os.getenv("OPENAI_API_KEY")
-    print("API_KEY \n",api_key)
+    print("API_KEY \n", api_key)
 
     test_news = """
-    Apple unveils new iPhone features focused on personal safety. 
-    The tech giant announced today that upcoming iPhone models will include 
-    enhanced emergency response capabilities and improved location tracking 
+    Apple unveils new iPhone features focused on personal safety.
+    The tech giant announced today that upcoming iPhone models will include
+    enhanced emergency response capabilities and improved location tracking
     during crisis situations. The new features will be available this fall.
     """
 
