@@ -1,7 +1,8 @@
+from .crawler import CrawlerBase
 from bs4 import BeautifulSoup as bs
 import requests
 
-class crawling:
+class CnnCrawler(CrawlerBase):
 
     def __init__(self, url):
         self.url = url
