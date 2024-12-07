@@ -1,13 +1,14 @@
-from .crawler import CrawlerBase
+from .article_crawler import ArticleCrawlerBase
 from bs4 import BeautifulSoup as bs
 import requests
 
-class CnnCrawler(CrawlerBase):
+
+class CnnArticleCrawler(ArticleCrawlerBase):
 
     def __init__(self, url):
         self.url = url
 
-    def crawler(self):
+    def get_article(self):
         response = requests.get(self.url)
 
         soup = bs(response.content, 'html.parser')
@@ -22,10 +23,9 @@ class CnnCrawler(CrawlerBase):
 """
 url = "https://edition.cnn.com/2024/12/01/middleeast/syrian-regime-airstrikes-opposition-forces-intl/index.html"
 
-cnn = crawling(url)
+cnn = CnnArticleCrawler(url)
 
-cnn_result = cnn.crawler()
+cnn_result = cnn.get_article()
 
 cnn_result
-    
 """

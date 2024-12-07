@@ -1,5 +1,5 @@
 from newsapi import NewsApiClient
-from .utils import *
+from .utils import JsonBeautifier
 
 newsapi = NewsApiClient(api_key='8af726a068d74a5588e34477b577a76d')
 newsapi_en_sources = [
@@ -19,6 +19,7 @@ newsapi_en_sources = [
     "the-washington-times", "time", "usa-today", "vice-news", "wired"
 ]
 
+
 def fun():
     # Init
 
@@ -26,7 +27,7 @@ def fun():
     top_headlines = newsapi.get_top_headlines(
         language='en',
         sources='bbc-news',
-        #category='business',
+        # category='business',
         page_size=100,
         page=1)
 
@@ -36,11 +37,10 @@ def fun():
         f.write(JsonBeautifier.toString(top_headlines))
 
 
-
 def source_filter():
     # Init
     sources: list = newsapi.get_sources()['sources']
     source_ids = [source['id'] for source in sources if source['language'] == 'en']
-    
+
     with open('sources_en.json', 'w') as f:
         f.write(JsonBeautifier.toString(source_ids))
