@@ -10,6 +10,23 @@ from flask import Flask, request
 from dotenv import load_dotenv
 
 
+"""
+kakao_api = KakaoApi()
+
+# 로그인 (사용자 인증 및 토큰 저장)
+kakao_api.login()
+
+# 토큰 갱신 (refresh token을 사용하여 access token 갱신)
+kakao_api.refresh_token()
+
+# 로그아웃 (카카오 로그아웃 및 토큰 파일 삭제)
+kakao_api.logout()
+
+# 메시지 전송 (카카오톡 메시지 전송)
+kakao_api.send_message("보낼 메시지 내용")
+"""
+
+
 class KakaoApi:
     def __init__(self):
         load_dotenv(verbose=True)
