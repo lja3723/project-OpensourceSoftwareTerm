@@ -383,4 +383,7 @@ $RECYCLE.BIN/
 # exclude secret env values
 .env
 
+# exclude token.json
+token.json
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,pycharm,visualstudiocode,linux,python

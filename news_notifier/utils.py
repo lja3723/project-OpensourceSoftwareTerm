@@ -1,5 +1,6 @@
 import json
 
+
 class JsonBeautifier:
     @staticmethod
     def toString(jsonObj):
