@@ -27,15 +27,20 @@ dependencies:
       - anyio==4.6.2.post1
       - attrs==24.2.0
       - beautifulsoup4==4.12.3
+      - blinker==1.9.0
       - bs4==0.0.2
       - certifi==2024.8.30
       - charset-normalizer==3.4.0
+      - click==8.1.7
       - distro==1.9.0
+      - flask==3.1.0
       - frozenlist==1.5.0
       - h11==0.14.0
       - httpcore==1.0.7
       - httpx==0.27.2
       - idna==3.10
+      - itsdangerous==2.2.0
+      - jinja2==3.1.4
       - jiter==0.8.0
       - jsonpatch==1.33
       - jsonpointer==3.0.0
@@ -44,6 +49,7 @@ dependencies:
       - langchain-openai==0.2.10
       - langchain-text-splitters==0.3.2
       - langsmith==0.1.146
+      - markupsafe==3.0.2
       - multidict==6.1.0
       - newsapi-python==0.2.7
       - numpy==1.26.4
@@ -66,4 +72,5 @@ dependencies:
       - tqdm==4.67.1
       - typing-extensions==4.12.2
       - urllib3==2.2.3
+      - werkzeug==3.1.3
       - yarl==1.18.0
