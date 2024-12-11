@@ -1,23 +1,12 @@
 from .article_crawler import ArticleCrawlerBase
 from bs4 import BeautifulSoup as bs
-import requests
 
 
 class CnnArticleCrawler(ArticleCrawlerBase):
-
-    def __init__(self, url):
-        self.url = url
-
-    def get_article(self):
-        response = requests.get(self.url)
-
-        soup = bs(response.content, 'html.parser')
-
+    def _crawling(self, soup: bs):
         content = soup.select_one(".article__content")
         paragraphs = content.select(".paragraph")
-        article_text = ' '.join([p.get_text().strip() for p in paragraphs])
-
-        return article_text
+        return ' '.join([p.get_text().strip() for p in paragraphs])
 
 
 """
