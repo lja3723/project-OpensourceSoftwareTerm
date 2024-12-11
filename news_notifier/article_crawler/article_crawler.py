@@ -12,8 +12,8 @@ class ArticleCrawlerBase(ABC):
         try:
             response = requests.get(self.url)
             return self._crawling(bs(response.content, 'html.parser'))
-        except AttributeError:
-            return None
+        except AttributeError as e:
+            print(f"AttributeError occurred: {e}")
 
     @abstractmethod
     def _crawling(self, soup: bs) -> str:
@@ -27,8 +27,14 @@ class ArticleCrawlerFactory:
         from .cnn import CnnArticleCrawler
         return CnnArticleCrawler(url)
 
+    @staticmethod
+    def __get_bbc_crawler(url: str) -> ArticleCrawlerBase:
+        from .bbc_news import BbcNewsArticleCrawler
+        return BbcNewsArticleCrawler(url)
+
     __crawlers = {
-        "cnn": __get_cnn_crawler
+        "cnn": __get_cnn_crawler,
+        "bbc-news": __get_bbc_crawler
     }
 
     @staticmethod
