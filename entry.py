@@ -1,14 +1,12 @@
-from news_notifier import news_collector as nc
+from news_notifier.news_collector import NewsCollector
 from news_notifier.kakao_api import KakaoApi
 import time
 
 
 def main():
-    kakao_api = KakaoApi()
-    # kakao_api.login()
-    # kakao_api.refresh_token()
-    kakao_api.send_message()
-    # kakao_api.logout()
+    news_collector = NewsCollector()
+    news_collector.collect_articles(sources=['bbc-news', 'cnn'])
+    # news_collector.print_top_headlines_links('bbc-news')
 
 
 if __name__ == "__main__":
