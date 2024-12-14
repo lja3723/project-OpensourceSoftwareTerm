@@ -1,6 +1,6 @@
 """
 사용형태
-form AI_service_call import NewsAIService
+from AI_service_call import NewsAIService
 
 news_service = NewsAIService()
 
@@ -14,7 +14,6 @@ result["data"]["summary"["korean"] #한국어 요약본
 
 
 """
-
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
@@ -34,13 +33,16 @@ class NewsAIService:
         self.llm = ChatOpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
             model_name=os.getenv("MODEL_NAME", "gpt-4o-mini")
-
         )
 
         # 출력 스키마 설정 (모델의 출력 형태 설정)
         response_schemas = [
             ResponseSchema(name="translation", description="Full Korean translation of the news article"),
-            ResponseSchema(name="summary", description="Concise Korean summary in 3 sentences or less")
+            ResponseSchema(name="summary", description="Concise Korean summary in 3 sentences or less"),
+            ResponseSchema(
+                name="vocabulary",
+                description="List of 5 relevant or useful English words from the article with their Korean meanings"
+            )
         ]
 
         # Create output parser
@@ -52,6 +54,8 @@ class NewsAIService:
         Please process the provided English news article as follows:
         1. Translate the entire text into natural, fluent Korean
         2. Create a concise summary in Korean (maximum 3 sentences)
+        3. Select 5 important or useful English words from the article that are relevant to the topic
+           Format: [{{"word": "English word", "meaning": "Korean meaning", "example": "Example sentence from the article"}}]
 
         {format_instructions}
 
@@ -60,6 +64,11 @@ class NewsAIService:
         - Summary should capture the key points in 3 sentences or less
         - Maintain formal/standard Korean language level
         - Preserve accurate news tone and context
+        - Choose vocabulary words that are:
+          * Relevant to the article's topic
+          * Useful for learning
+          * Representative of advanced or professional language
+          * Include context with an example sentence from the article
 
         News article to process: {news_text}"""
 
@@ -89,7 +98,8 @@ class NewsAIService:
                     },
                     "summary": {
                         "korean": parsed_output["summary"]
-                    }
+                    },
+                    "vocabulary": parsed_output["vocabulary"]
                 }
             }
 
@@ -124,5 +134,15 @@ if __name__ == "__main__":
         print(result["data"]["translation"]["korean"])
         print("\n=== 요약 ===")
         print(result["data"]["summary"]["korean"])
+
+        # 단어 목록 조회
+        vocabulary_list = result["data"]["vocabulary"]
+
+        # 단어 목록 출력
+        print("\n=== 주요 단어 목록 ===")
+        for word_item in vocabulary_list:
+            print(f"\n영단어: {word_item['word']}")
+            print(f"의미: {word_item['meaning']}")
+            print(f"예문: {word_item['example']}")
     else:
         print("Error:", result["message"])
