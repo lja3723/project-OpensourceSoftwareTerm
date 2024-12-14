@@ -81,6 +81,7 @@ class KakaoApi:
             + "response_type=code&client_id=" + self.rest_api_key \
             + "&redirect_uri=" + self.redirect_full_uri \
             + "&scope=talk_message"
+        print("login url: ", url)
         webbrowser.open(url)
 
         class RedirectProcessServer:
