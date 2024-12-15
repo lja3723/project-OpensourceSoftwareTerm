@@ -1,10 +1,11 @@
 # project-OpensourceSoftwareTerm
 
-오픈소스소프트웨어 텀프로젝트
+2024-2 오픈소스소프트웨어 텀프로젝트
 
 ## 프로젝트 개요
 
-오늘의 영어권 헤드라인 뉴스를 매일 가져와서 번역 및 요약하여 카카오톡 또는 디스코드 등의 알림으로 알려주는 서비스
+<img width="1097" alt="image" src="https://github.com/user-attachments/assets/0dcb67b8-4f8f-4313-bfaa-c236d6a339a2" />
+
 
 ## 구성요소
 
