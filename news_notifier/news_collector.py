@@ -52,9 +52,6 @@ class NewsCollector:
                 })
                 print("Done")
 
-        from .utils import JsonBeautifier
-        JsonBeautifier.printPretty(articles)
-
         return articles
 
     def print_top_headlines_links(self, source: str):

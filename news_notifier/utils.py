@@ -11,4 +11,8 @@ class JsonBeautifier:
         print(json.dumps(jsonObj, indent=4))
 
 
-__all__ = ['JsonBeautifier']
+def dedent(text: str):
+    return "\n".join(line.lstrip() for line in text.splitlines())
+
+
+__all__ = ['JsonBeautifier', 'dedent']
