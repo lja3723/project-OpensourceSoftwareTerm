@@ -17,7 +17,7 @@ def refresh_token_scheduler():
 
 
 # 매일 18:00에 뉴스 알림
-@repeat(every().day.at("15:46"))
+@repeat(every().day.at("18:00"))
 def news_notify_scheduler():
     print("뉴스 알림 스케줄러가 실행됩니다.")
     # 기사 수집 후 랜덤하게 3개의 기사 선택
